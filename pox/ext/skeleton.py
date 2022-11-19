@@ -82,8 +82,22 @@ def launch (foo, bar = False):
   # 3. True if this is the last instance, False otherwise
   # The last is just a comparison between #1 and #2, but is convenient.
 
+
+
+  import pox.log.color
+  pox.log.color.launch()
+  import pox.log
+  pox.log.launch(format="[@@@bold@@@level%(name)-22s@@@reset] " +
+                        "@@@bold%(message)s@@@normal")
+  from pox.core import core
+  import pox.openflow.discovery
+  pox.openflow.discovery.launch()
+
   log.warn("Foo: %s (%s)", foo, type(foo))
   log.warn("Bar: %s (%s)", bar, type(bar))
+
+  import pox.forwarding.l3_learning
+  pox.forwarding.l3_learning.launch()
 
   core.addListenerByName("UpEvent", _go_up)
 

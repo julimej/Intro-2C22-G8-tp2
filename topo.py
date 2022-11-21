@@ -14,8 +14,9 @@ class MyTopo ( Topo ) :
 	def __init__ ( self, number_switches ) :
 	# Initialize topology
 		Topo.__init__ ( self )
+		number_switches += 1
 		# Create switch
-		s_first = self.addSwitch('switch_0', dpid=int2dpid(0))
+		s_first = self.addSwitch('switch_1', dpid=int2dpid(1))
 		s_last = self.addSwitch('switch_' + str(number_switches + 1), dpid=int2dpid(number_switches + 1))
 		# Create hosts
 		h1 = self.addHost('host_1')
@@ -25,7 +26,7 @@ class MyTopo ( Topo ) :
 
 		# Add links between switches and hosts self.addLink( s1 , s2 )
 		switches = [s_first]
-		switches += [self.addSwitch('switch_' + str(switch), dpid=int2dpid(switch)) for switch in range(1,number_switches+1)]
+		switches += [self.addSwitch('switch_' + str(switch), dpid=int2dpid(switch)) for switch in range(2,number_switches+1)]
 		switches.append(s_last)
 
 		for iter_num in range(len(switches)-1):

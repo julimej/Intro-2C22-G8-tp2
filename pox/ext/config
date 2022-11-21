@@ -1,2 +1,2 @@
-10.0.0.2,any,10.0.0.3,any,ICMP
+any,any,any,3000,UDP
 10.0.0.2,any,10.0.0.4,any,TCP

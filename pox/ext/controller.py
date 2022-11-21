@@ -40,9 +40,8 @@ class Controller(EventMixin):
 	def _handle_ConnectionUp(self, event):
 
 		logger.debug("Looking for " + str(self.firewall_switch))
-		logger.debug("firewall_switch " + str(event.dpid))
+		logger.debug("Switch " + str(event.dpid))
 		if int(event.dpid) == int(self.firewall_switch):
-          	# self.build_firewall_rules(event,rules)
 			for rule in self.rules:
 				logger.debug("rule " + str(rule))
 				self.create_match(event,rule)

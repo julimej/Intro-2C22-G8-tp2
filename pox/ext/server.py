@@ -7,7 +7,7 @@ f = open('/home/julian/Desktop/Intro-2C22-G8-tp2/pox/ext/a.txt', 'w+')
 while True:
     data, addr = s.recvfrom(1024)
     print ('data', data)
-    f.write(data)
+    f.write(str(data))
     f.flush()
 f.close()
 s.close()

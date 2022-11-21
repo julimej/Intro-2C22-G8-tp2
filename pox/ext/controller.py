@@ -1,6 +1,5 @@
 import sys
 import os
-import time
 
 from pox.core import core
 
@@ -11,8 +10,7 @@ import pox.forwarding.l2_learning
 
 import pox.lib.packet as pkt
 from pox.lib.revent import EventMixin
-from pox.lib.util import dpid_to_str
-from pox.lib.addresses import IPAddr, EthAddr
+from pox.lib.addresses import IPAddr
 
 logger = core.getLogger()
 
@@ -27,11 +25,11 @@ class Controller(EventMixin):
 
 	def parse_rules(self):
 		rules = []
-		with open(os.path.join(sys.path[0],"config"),"r") as config_file:
+		with open(os.path.join(sys.path[0],"rules"),"r") as config_file:
 			for line in config_file:
 				rule = line.rstrip("\n").split(",")
 				if (len(rule) > 0) : # evito lineas vacias
-				    rules.append(rule)
+					rules.append(rule)
 		self.rules = rules
 
 	def echo(self):
@@ -75,9 +73,6 @@ class Controller(EventMixin):
 		logger.debug(match)
 
 		self.drop_packet_with_match(match,event)
-
-		
-		
 
 def launch(firewall_switch = 0):
 	logger.debug("firewall_switch setted to " + firewall_switch)

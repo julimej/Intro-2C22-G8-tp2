@@ -299,7 +299,7 @@ class dns(packet_base):
             try:
                 query_head = self.next_question(raw, query_head)
             except Exception as e:
-                self._exc(e, 'parsing questions')
+                # self._exc(e, 'parsing questions')
                 return None
 
         # answers
@@ -307,7 +307,7 @@ class dns(packet_base):
             try:
                 query_head = self.next_rr(raw, query_head, self.answers)
             except Exception as e:
-                self._exc(e, 'parsing answers')
+                # self._exc(e, 'parsing answers')
                 return None
 
         # authoritative name servers

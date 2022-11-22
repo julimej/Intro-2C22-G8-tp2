@@ -1,3 +1,5 @@
-any,any,any,80,any
+any,any,any,80,TCP
+any,any,any,80,UDP
 10.0.0.1,any,any,5001,UDP
 10.0.0.2,any,10.0.0.3,any,any
+10.0.0.3,any,10.0.0.2,any,any

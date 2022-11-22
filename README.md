@@ -33,3 +33,17 @@ Si se desea probar que no se puede acceder a un puerto especifico de un host, se
 host_1 telnet host_3 <port>
 ```
 Si el comando devuelve un connection refused, significa que la conexion fue realizada correctamente. Si el comando devuelve un timeout, significa que la conexion fue bloqueada por el firewall.
+
+Si se desea probar el envío de datagramas UDP al host 2, debemos ver la terminar del host 2 e inicar el servidor para ver los print de la data. Entonces hacemos
+``` bash
+xterm host_2
+```
+Dentro de la terminal que abre el comando anterior
+``` bash
+python3 pox/ext/server.py
+```
+
+Y luego desde mininet 
+``` bash
+host_4 iperf -c host_2 -u -p 3000
+```
